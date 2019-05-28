@@ -1,0 +1,1944 @@
+C+HISTORY   08/08/81  17.27.15
+C+HISTORY   28/07/81  12.06.06
+C+HISTORY   23/07/81  10.24.31
+C+HISTORY   21/07/81  19.05.24
+C+HISTORY   21/07/81  12.31.44
+C+HISTORY   21/07/81  07.36.49
+C+HISTORY   18/07/81  17.43.58
+C+HISTORY   17/07/81  15.42.11
+C+HISTORY   09/07/81  07.17.14
+C+HISTORY   04/07/81  19.15.31
+C+HISTORY   26/06/81  14.33.08
+C+HISTORY   18/06/81  08.07.57
+C+HISTORY   04/06/81  16.26.17
+C+HISTORY   02/06/81  07.57.21
+C
+C+HISTORY   01/06/81  05.25.17
+C+HISTORY   30/05/81  13.35.59
+C+HISTORY   29/05/81  01.35.10
+C+HISTORY   27/05/81  06.05.38
+FOMA***:,NAME,
+ ,TITLE,ACCEMБЛEP MADLEN. PEДAKTOP. ПOДГOTOBKA TEKCTA, ДИAГHOCTИKA.
+ MADLEN*3:,SUBP,
+ MDL*6T8W:,SUBP,
+ PRINT8**:,SUBP,
+ BUFPER:,SUBP,
+ PRIBUF*:,EQU,BUFPER+2000B
+ INFOR:,EQU,BUFPER+4000B
+ STROKA:,EQU,INFOR+10
+ LISTS:PC,BLOCK,SECTOR(4096),TABDEC(1024)
+ ERRORBUF:,LC,13
+ SPASAN*: ,LC,220
+ KART:    ,EQU,SPASAN*+52
+ KARTET:  ,EQU,SPASAN*+136
+ RR1:,EQU,14
+ RR2:,EQU,15
+ MASK24:,EQU,17
+ INDTABL: ,EQU,27
+ FIXCNT:  ,EQU,40
+ FLAGTABL:,EQU,41
+ NK:      ,EQU,52
+ NKCARD:  ,EQU,54
+ MSK7*5:,EQU,60
+ CON1:    ,EQU,76
+ CON2:    ,EQU,77
+ CON3:    ,EQU,78
+ CON4:    ,EQU,79
+ CON01:   ,EQU,82
+ CON02:,EQU,83
+ CN0001:  ,EQU,89
+ CN00001:,EQU,93
+ CN00002:,EQU,94
+ CN00007:,EQU,99
+ AA6SIMB:,EQU,105
+ AA6SIMBR:,EQU,106
+ RCON1:   ,EQU,108
+ CONR15:,EQU,109
+ CNR4000:,EQU,111
+ CNR7S12:,EQU,112
+ RCON20:,EQU,116
+ ERCNT:   ,EQU,121
+ CONR24:,EQU,122
+ CONR12:,EQU,123
+ CREAL10:,EQU,124
+ RCONY:   ,EQU,128
+ CON776:,EQU,134
+ RBLANK4: ,EQU,138
+ CINT0:,EQU,139
+ OUTMADLE:,EQU,145
+ VERET:   ,EQU,165
+ SOS:     ,EQU,169
+ NN:,EQU,170
+ XTEXT:   ,EQU,173
+ TITLE1:  ,EQU,187
+ STRNUM:,EQU,197
+ TITLE2:,EQU,198
+ IFNAM:,EQU,210
+ NG1B:,EQU,215
+ NGZB:    ,EQU,216
+ EXPO**:,EQU,220
+ *PROBEL:,EQU,234
+ SAVEDAT:,EQU,238
+ FLGEX*:,EQU,239
+ MESADR5:,EQU,283
+ XADRESS5:,EQU,284
+ MESMOD:,EQU,294
+ MISTABL:,EQU,295
+ MESADR4:,EQU,298
+ OCTAL:,EQU,299
+ MESADR3:,EQU,308
+ STN1:,EQU,329
+ MODTEXT:,EQU,377
+ CNR10000:,EQU,380
+ RCON377:,EQU,398
+ LISTAND:,EQU,401
+ LISMASK:,EQU,402
+ LISLAST:,EQU,405
+ LIS*G:,EQU,406
+ LIS*B:,EQU,407
+ LIS*C:,EQU,408
+ LIS*E:,EQU,409
+ LIS*F:,EQU,410
+ LIS*L:,EQU,411
+ LIS*R:,EQU,412
+ LIS*S:,EQU,413
+ LIS*V:,EQU,414
+ RDFLAG:,EQU,415
+ CONR16:,EQU,420
+ RCON40:,EQU,495
+ ZISO0:,EQU,510
+ ZGOST7:,EQU,511
+ MAINPRIN:,EQU,525
+ STNAM*:,EQU,587
+ RCON3:,EQU,595
+ FLFAT:,EQU,596
+ RSTNR:,EQU,597
+ RISO10:,EQU,598
+ D4B:,EQU,599
+ STAR3B:,EQU,600
+ CONPRIL:,EQU,601
+ RMASK26:,EQU,602
+ C/10:,EQU,603
+ CTM:,EQU,604
+ NCARD:,EQU,626
+ CON76:,EQU,627
+ LIS*M:,EQU,CN00002
+ LIS*N:,EQU,CN00001
+ LIS*T:,EQU,CNR10000
+ LIS*U:,EQU,CNR4000
+ PARTID:,EQU,275
+ IDENT:,EQU,276
+ IDENT1:,EQU,277
+ IDENT2:,EQU,278
+ CNR40000:,EQU,LIS*R
+ ENTRY*:,LC,
+ C       :   ,  BSS  ,
+ DI:,BSS,
+ :,UJ,TIME                                BXOДЫ
+ :12,VTM,BSSPRINT
+ ,UJ,CHECKPRO
+ :12,VTM,COMCNPR
+ ,UJ,CHECKPRO
+ :12,VTM,COMPRINT
+ ,UJ,CHECKPRO
+ :12,VTM,COMPRI
+ ,UJ,CHECKPRO
+ :12,VTM,CONSTPRI
+ ,UJ,BLKPRIM
+ :12,VTM,DECPRINT
+ ,UJ,CHECKPRO
+ :6,AAX,RCON1
+ ,UJ,ENDPRO1
+ :12,VTM,SKIPPR
+ ,UJ,CHECKPRO
+ :6,XTA,*PROBEL
+ ,UJ,GERPRI
+ :12,VTM,SKIPREE
+ ,UJ,CHECKPRO
+ :9,VTM,*TEXT1
+ ,UJ,GENP
+ :9,VTM,*TEXT2
+ ,UJ,GENP
+ :9,VTM,*TEXT3
+ ,UJ,GENP
+ 6,WTC,FLFAT
+ ,UJ,POSTERR
+ :9,VTM,*TEXT5
+ ,UJ,GENP
+ MADNAME:6,XTA,TITLE1
+ ,UJ,*MADNAME
+ :9,VTM,*NODEC
+ ,UJ,DEC
+ :9,VTM,*TWODEC
+ ,UJ,DEC
+ :9,VTM,*ENDOP
+ ,UJ,OPR
+ :9,VTM,*NOOP
+ ,UJ,OPR
+ :12,VTM,TOPRINT
+ ,UJ,BLKPRIM
+ :,ITA,13
+ ,UJ,TOPRINT1
+ :12,VTM,SETPRI
+ ,UJ,CHECKPRO
+ :12,VTM,IFPR
+ ,UJ,CHECKPRO
+ :6,XTA,FLGEX*
+ ,UJ,ERIFPR
+ :12,VTM,ERRORPR
+ ,UJ,CHECKPRO
+ :12,VTM,LISTPR
+ ,UJ,CHECKPRO
+ :12,VTM,CPRINT
+ ,UJ,CHECKPRO
+ :12,VTM,EJECT
+ ,UJ,CHECKPRO
+ :12,VTM,SPACE
+ ,UJ,CHECKPRO
+ :9,VTM,*ZEROM
+ ,UJ,OPR
+ :9,VTM,*LONGM
+ ,UJ,OPR
+ :9,VTM,*LOCKDEC
+ ,UJ,DEC
+ :9,VTM,*TWOCOP
+ ,UJ,DEC
+ :9,VTM,*NOABSI
+ ,UJ,DEC
+ 9,VTM,*NODEFI
+ ,UJ,DEC
+ :9,VTM,*NOABSAD
+ ,UJ,OPR
+ :9,VTM,*NODEFAD
+ ,UJ,OPR
+ :9,VTM,*LONGAD
+ ,UJ,OPR
+ :9,VTM,*BADPAR
+ ,UJ,DEC
+ :9,VTM,*GLOBER
+ ,UJ,OPR
+C
+C+   ФOPMИPOBAHИE ПEPBOГO TИTЛA
+C
+ *MADNAME:13,U1A,
+ ,ITA,12
+ ,XTS,ENTRY*
+ 12,VJM,MDL*6T8W
+ :6,ATX,CTM+6
+ 6,STX,TITLE1+1
+ 6,ATX,CTM+5
+ 6,STX,TITLE1
+ ,ATI,12
+ 13,UJ,
+C
+C+   БЛOKИPOBKA ПEЧATИ
+C
+ BLKPRIM:6,XTS,LISLAST
+ 6,AAX,MAINPRIN
+ 6,AEX,MAINPRIN
+ ,U1A,*+2
+ 15,XTA,
+           12,  UJ   ,
+ :15,XTA,
+           13,  UJ   ,
+ CHECKPRO:6,XTS,FLAGTABL
+ 6,AAX,RCON1
+ ,U1A,BLKPRIM+2
+ ,UJ,BLKPRIM+3
+C
+C+   ПEЧATЬ BSS, ENTRY
+C
+ BSSPRINT:11,VJM,ERRPLACE
+ :6,XTA,NK
+ 6,ARX,SOS
+ ,ASN,64+15
+ ,YTA,
+ 6,AUX,MSK7*5
+ 6,AEX,ZISO0
+            6,  ATX  ,-4
+ ,UJ,DECPRC
+C
+C+   PAЗБИEHИE KAPTЫ HA CTPOKИ
+C
+ PRIKYADR:6,ARX,SOS
+ 6,ARX,NK
+ ,ASN,64-33
+ 6,AUX,MSK7*5
+ 6,AEX,ZISO0
+ 6,ATX,-4
+ PRIKYKY:,ITA,13
+ 6,XTS,-4
+ 12,VTM,C
+ 12,AAX,GYGY-C
+ 6,ATX,-5
+ 6,XTA,-3
+ 6,ATX,-4
+ 6,XTA,-2
+ 6,ATX,-3
+ 6,XTA,12
+ 6,ATX,-2
+ 6,XTA,13
+ 12,AAX,=:777774-C
+ 6,ATX,-1
+ 6,XTA,LIS*G
+ 6,AAX,LISLAST
+ ,UZA,STFORM
+ 6,XTA,-5
+ 6,AEX,RCON40
+ 6,ATX,-5
+ 6,XTA,6
+ 15,ATX,
+ 12,AAX,=:777774-C
+ 6,ATX,6
+ 14,VTM,STROKA-5
+ ,ITA,14
+ 14,VTM,STROKA+6
+ ,ITS,14
+ 6,XTS,RCON1
+ 13,VJM,PRINT8**
+ :6,AEX,6
+ 6,ATX,6
+ 6,AEX,RBLANK4
+ 11,VTM,-4
+ ,U1A,PRIKYP
+ 6,XTA,*PROBEL
+ :11,UTC,11
+ 6,AEX,
+ ,U1A,PRIKYP
+ 6,XTA,*PROBEL
+ 11,VLM,*-2
+ 15,WTC,
+ 13,VTM,
+ 13,UJ,
+ PRIKYP:6,XTA,9
+ 15,ATX,
+ 6,AAX,MASK24
+ 6,ATX,9
+ 15,AEX,
+ 14,VTM,STROKA+6
+ ,ITS,14
+ 14,VTM,STROKA+9
+ ,ITS,14
+ 14,VTM,44
+ ,ITS,14
+ 13,VJM,PRINT8**
+ 6,ATX,9
+ 12,AEX,=10020040-C
+ 6,XTS,10
+ 6,AEX,*PROBEL
+ 15,AOX,
+ 6,XTS,11
+ 6,AEX,*PROBEL
+ 15,AOX,
+ 14,VTM,STROKA+9
+ 15,WTC,
+ 13,VTM,
+ 13,UZA,
+ ,ITS,14
+ 14,UTM,2
+ ,ITS,14
+ 14,VTM,44
+ :,ITS,14
+ ,UJ,PRINT8**
+ STFORM:6,XTA,7
+ 15,ATX,
+ 12,AAX,=:777774-C
+ 6,ATX,7
+ 14,VTM,STROKA-5
+ ,ITA,14
+ 14,VTM,STROKA+7
+ ,ITS,14
+ 6,XTS,RCON1
+ 13,VJM,PRINT8**
+ :6,AEX,7
+ 6,ATX,7
+ 6,AEX,RBLANK4
+ 11,VTM,-3
+ ,U1A,PRIKYPS
+ 6,XTA,*PROBEL
+ :11,UTC,11
+ 6,AEX,
+ ,U1A,PRIKYPS
+ 6,XTA,*PROBEL
+ 11,VLM,*-2
+ 15,WTC,
+ 13,VTM,
+ 13,UJ,
+ PRIKYPS:6,XTA,10
+ 15,ATX,
+ 6,AAX,CON776
+ 6,ATX,10
+ 15,AEX,
+ 14,VTM,STROKA+7
+ ,ITS,14
+ 14,VTM,STROKA+10
+ ,ITS,14
+ 14,VTM,46
+ ,ITS,14
+ 13,VJM,PRINT8**
+ :6,ATX,10
+ 12,AEX,BLANK/-C
+ 6,XTS,11
+ 6,AEX,*PROBEL
+ 15,AOX,
+ 14,VTM,STROKA+10
+ 15,WTC,
+ 13,VTM,
+ 13,UZA,
+ ,ITS,14
+ 14,UTM,1
+ ,ITS,14
+ 14,VTM,46
+ ,UJ,STFORM-1
+ BLANK/:,ISO,6H''
+C
+C+   ПEЧATЬ KOHCTAHTЫ
+C
+ COMCNPR:6,ATX,-9
+ 11,VJM,ERRPLACE
+ :6,XTA,*PROBEL
+ 6,ATX,-2
+ 6,XTA,LIS*G
+ 6,AAX,LISLAST
+ ,U1A,C01
+ 6,ATX,-3
+ 6,XTA,CONR15
+ ,UJ,PRIKYADR
+ C01:6,XTA,-9
+ 12,VTM,C
+ 12,AUX,M2SH-C
+ 12,AEX,Z2SH-C
+ 6,ATX,-3
+ 6,XTA,-9
+ ,ASN,64-12
+ 15,ATX,
+ 12,AUX,CCNP//-C
+ 12,AEX,ZERO-C
+ 6,STX,-2
+ ,ASN,64-12
+ 15,ATX,
+ 12,AUX,M2SH-C
+ 12,AEX,Z2SH-C
+ 6,STX,-8
+ ,ASN,64-12
+ 12,AUX,CCNP//-C
+ 12,AEX,ZERO-C
+ 11,VZM,C0
+ 6,ATX,-7
+ 12,XTA,*TEXT-C
+ 6,ATX,-9
+ ,ITA,13
+ 6,XTS,CONR15
+ 13,VJM,PRIKYADR
+ :14,VTM,STROKA-9
+ 15,WTC,-1
+ 13,VTM,
+ ,ITA,14
+ 14,UTM,2
+ ,ITS,14
+ :,ITS,
+ ,UJ,PRINT8**
+ C0:6,ATX,-1
+ 6,XTA,-3
+ 6,ATX,-4
+ 6,XTA,-2
+ 6,ATX,-3
+ 6,XTA,-8
+ ,ASN,64-8
+ 6,ATX,-2
+ 6,XTA,NK
+ 6,ARX,SOS
+ ,ASN,64+12
+ ,YTA,
+ 12,AUX,M2SH-C
+ 12,AEX,Z2SH-C
+ 6,ATX,-5
+ 14,VTM,STROKA-5
+ ,ITS,14
+ 14,UTM,4
+ ,ITS,14
+ ,UJ,C0-1
+ CONSTPRI:6,ATX,-9
+ 6,XTA,LIS*G
+ 6,AAX,LISLAST
+ 11,VTM,
+ 13,UZA,
+ ,UJ,C01
+ SETPRI:6,ATX,-9
+ 11,VJM,ERRPLACE
+ :6,XTA,IFNAM
+ ,U1A,*+3
+ 6,XTA,LIS*G
+ 6,AAX,LISLAST
+ ,U1A,COMCNPR+1
+ ,UJ,C+11B
+ :6,XTA,LIS*G
+ 6,AAX,LISLAST
+ ,UZA,DECPRINT+1
+ 6,XTA,FLAGTABL
+ 6,AAX,CN0001
+ 14,VTM,PRIKYADR
+ ,U1A,SPR
+ 6,XTA,-9
+ ,ASN,64-24
+ 6,ATX,-9
+ ,UTC,*TEXT
+ ,XTA,
+ 6,ATX,-4
+ 14,VTM,PRIKYKY
+ SPR:6,XTA,-9
+ 12,VTM,C
+ 12,AUX,M2SH-C
+ 12,AEX,Z2SH-C
+ 6,ATX,-3
+ 6,XTA,-9
+ ,ASN,64-12
+ 12,AUX,CCNP//-C
+ 12,AEX,ZERO-C
+ 6,ATX,-2
+ ,ITA,
+ 14,UJ,
+ CCNP//:,OCT,0160 3407 0160
+ GYGY:,OCT,0017 7777 7777 74
+ ZERO:,ISO,6H0000 ''
+ ZRBL    :   ,  ISO  ,6H0000
+C
+C+   ПEЧATЬ KOMAHДЫ
+C
+ COMPRINT:6,ATX,-4
+ 6,XTA,*PROBEL
+ 6,ATX,-2
+ 6,XTA,LIS*G
+ 6,AAX,LISLAST
+ 6,ATX,-3
+ 11,VTM,*C0
+ 8,VZM,ERRPLACE
+ 6,XTA,FLAGTABL
+ 6,AAX,CN0001
+ 12,VTM,OM
+ 14,VTM,C
+ ,UZA,BLKPRIM
+ 6,XTA,LIS*U
+ 6,AAX,LISLAST
+ 6,AEX,-3
+ 13,UZA,
+ ,UJ,BLKPRIM
+ *C0:6,XTA,MESADR4
+ 14,VTM,C
+ ,UZA,OM
+ 6,XTA,-3
+ ,U1A,OM+1
+ 6,XTA,-4
+ 6,AAX,CN00002
+ 12,VTM,
+ :,UZA,*+4
+ 6,XTA,-4
+ 6,AAX,CNR40000
+ ,UZA,*+3
+ 6,XTA,-4
+ 6,AAX,RCONY
+ 6,AEX,RCONY
+ ,U1A,LON1
+ :6,XTA,MESADR4
+ 6,ARX,SOS
+ LON2:,ASN,64+12
+ ,YTA,
+ 14,AUX,M2SH-C
+ 14,AEX,Z2SH-C
+ 6,ATX,-2
+ ,UJ,CHCKADR
+ LON1:6,XTA,-4
+ 6,AEX,CNR40000
+ 6,ARX,SOS
+ ,UJ,LON2
+ OM:6,XTA,-3
+ ,UZA,CHCKADR
+ :6,XTA,-4
+ ,ASN,64-24
+ 15,ATX,
+ 6,AAX,CON02
+ ,U1A,LONGCOM
+ 15,XTA,-1
+ 14,AUX,M1SH-C
+ 14,AEX,Z1SH-C
+ 6,STX,-3
+ ,ASN,64-12
+ 14,AUX,M2SH-C
+ 14,AEX,Z2SH-C
+ 6,ATX,-2
+ ,UJ,CHCKADR
+ LONGCOM:6,XTA,-4
+ 6,AAX,RCONY
+ 6,AEX,RCONY
+ ,UZA,LONTS
+ 6,XTA,-4
+ 6,AAX,CNR40000
+ ,UZA,LON
+ 6,XTA,SOS
+ 12,VTM,
+ ,U1A,LON3
+ LON:15,XTA,-1
+ 14,AUX,M1LG-C
+ 14,AEX,Z1LG-C
+ 6,STX,-3
+ :,ASN,64-9
+ 6,AUX,MSK7*5
+ 14,AEX,ZNK-C
+ 6,ATX,-2
+ CHCKADR:6,XTA,FLAGTABL
+ 6,AAX,CN0001
+ ,UZA,LEFCOM
+ 14,XTA,*TEXT-C
+ LEFR:6,ATX,-4
+ 8,VZM,PRIKYKY
+ 6,AEX,-3
+ 6,AAX,RCON40
+ 6,AEX,-4
+ 6,ATX,-4
+ 14,VTM,STROKA-4
+ ,ITS,14
+ 14,UTM,2
+ ,ITS,14
+ ,ITS,
+ ,UJ,PRINT8**
+ LEFCOM:6,XTA,NK
+ 6,ARX,SOS
+ ,ASN,64+12
+ ,YTA,
+ 14,AUX,M2SH-C
+ 14,AEX,Z2SH-C
+ ,UJ,LEFR
+ LONTS:6,XTA,SOS
+  ,UZA,LON
+ 6,XTA,MESADR4
+ ,UZA,LON
+ 6,WTC,-4
+ ,UTC,TABDEC+4000B
+ ,XTA,
+ 15,ATX,1
+ 6,AAX,CN00007
+ 6,AEX,CN00001
+ ,U1A,LON
+ 15,XTA,1
+ 6,ARX,SOS
+ 6,STX,-4
+ LONF:14,AUX,M1LG-C
+ 14,AEX,=6H00''00:-C
+ 6,ATX,-3
+ 6,XTA,-4
+ ,ASN,64-24
+ ,UJ,CHCKADR-2
+ LON3:6,ARX,-4
+ 6,ARX,CNR40000
+ 6,STX,-4
+ ,UJ,LONF
+ M1SH    :   ,  OCT  ,0020 3400 0060 3407
+ Z1SH:,ISO,6H00''000
+ M2SH    :   ,  OCT  ,0000 3407 0160 3400
+ Z2SH    :   ,  ISO  ,6H 0000
+ M1LG    :   ,  OCT  ,0020 3400 0060 3400
+ Z1LG:,ISO,6H00''00
+C
+C+   ПEЧATЬ KOMAHДЫ 00 22 00000
+C
+ COMPRI:6,XTA,LISLAST
+ 6,AAX,LIS*U
+ 13,UZA,
+ 12,VJM,BLKPRIM
+ :14,VTM,*TEXT
+ ,ITS,14
+ 6,XTS,LIS*G
+ 6,AAX,LISLAST
+ ,UZA,*+1
+ 14,UTM,2
+ :,ITA,14
+ ,ITS,
+ ,UJ,PRINT8**
+ *TEXT:,ISO,12H  -   0022 ''
+ ZNK:,ISO,6H00000
+C
+C+   ПEЧATЬ ДEKЛAPATИBHЫX ИHCTPYKЦИЙ
+C
+ DECPRINT:11,VJM,ERRPLACE
+ :6,XTA,RDFLAG
+ 6,ATX,-4
+ 6,AEX,*PROBEL
+ 6,AOX,NK
+ 6,AOX,STN1
+ ,UZA,NCARDN
+ DECPRC:6,XTA,*PROBEL
+ SETCOUNT:6,ATX,-2
+ 6,XTA,LISLAST
+ 6,AAX,LIS*G
+ 6,AEX,LIS*G
+ 6,ARX,NGZB
+ 12,VTM,C
+ 12,AAX,BLANK/-C
+ 6,ATX,-3
+ 6,XTA,MESADR5
+ ,UZA,SETCNTB
+ ,ASN,64-33
+ 6,AUX,MSK7*5
+ 15,ATX,1
+ 6,ARX,MSK7*5
+ ,ASN,64-2
+ 6,AAX,*PROBEL
+ ,ANX,
+ ,ATI,14
+ 6,XTA,NGZB
+ 14,ASN,64-3
+ 12,XTS,ZNK-C
+ 6,AEX,*PROBEL
+ 15,AAX,
+ 6,AEX,*PROBEL
+ 15,AEX,1
+ 6,ATX,-2
+ 6,XTA,XADRESS5
+ ,UJ,SETCNTB+2
+ SETCNTB:15,ATX,1
+ 6,XTA,XADRESS5
+ ,UTC,
+ ,UZA,TTO-1
+ :14,VTM,-=32
+ ,UZA,*+3
+ 6,AEX,CON1
+ 14,VTM,
+ :,UZA,*+1
+ ,UTC,=170-=32
+ :14,UTM,=32
+ 6,XTA,CON776
+ 15,AAX,1
+ ,U1A,SETCNTL
+ 6,XTA,-3
+ 14,VZM,TTO
+ SETCNTL1:,UZA,*+2
+ 14,AEX,
+ 6,ATX,-3
+ ,UJ,TTO
+ 6,XTA,-4
+ ,ASN,64+8
+ 6,AEX,RCON40
+ 6,AAX,RCON377
+ :,U1A,*+3
+ 14,XTA,
+ SETCNTL2:,ASN,64-8
+ 6,AEX,-4
+ 6,ATX,-4
+ ,UJ,PRIKYKY
+ :15,ATX,1
+ 6,XTA,NK
+ 6,AOX,STN1
+ ,U1A,*+6
+ 15,XTA,1
+ ,ASN,64+3
+ 6,AEX,RCON1
+ ,UZA,*+4
+ SETCNTL3:15,XTA,1
+ 12,AEX,=154-C
+ ,U1A,PRIKYKY
+ 12,XTA,=154-C
+ 14,AEX,
+ ,UJ,SETCNTL2
+ :14,XTA,
+ ,ASN,64+8
+ ,YTA,
+ 6,AEX,-2
+ 6,ATX,-2
+ ,UJ,PRIKYKY
+ SETCNTL:6,XTA,-3
+ ,U1A,SETCNTL1
+ 6,XTA,-4
+ ,ASN,64+8
+ 6,AEX,RCON40
+ 6,AAX,RCON377
+ ,UZA,SETCNTL2-1
+ 15,ATX,1
+ ,ASN,64+3
+ 6,AEX,RCON1
+ ,UZA,*+3
+ 6,XTA,NK
+ 6,AOX,STN1
+ 14,VZM,PRIKYKY
+ ,UZA,SETCNTL3
+ ,UJ,PRIKYKY
+ :6,XTA,-2
+ ,ASN,64-8
+ ,ASN,64+8
+ 12,AEX,=:124-C
+ 6,ATX,-2
+ ,UJ,PRIKYKY
+ NCARDN:6,XTA,NKCARD
+ 6,ARX,RCON1
+ 15,ATX,
+ 6,AAX,CONR12
+ 15,AEX,
+ ,U1A,DECPRC
+ 6,XTA,NKCARD
+ ,ASN,64+9
+ ,YTA,
+ ,ASN,64+3
+ 6,AUX,MSK7*5
+ ,UTC,=6H 000L
+ ,AEX,
+ 6,ATX,-4
+ ,UJ,DECPRC
+ :6,XTA,-3
+ TTO:,UZA,PRIKYKY
+ 6,XTA,VERET
+ ,UZA,PRIKYKY
+ 12,AUX,M2SH-C
+ 12,AEX,=6H''0000''-C
+ 6,AOX,-3
+ 6,ATX,-3
+ ,UJ,PRIKYKY
+C
+C+   PEДAKTИPOBAHИE KAPTЫ
+C
+ ERRPLACE:6,XTA,CON76
+ 6,AAX,MISTABL
+ ,U1A,ERRPLA1
+ 12,VJM,BLKPRIM
+ :6,XTA,LIS*E
+ 6,AAX,LISLAST
+ 6,AEX,LIS*E
+ 6,AOX,EXPO**
+ 11,U1A,
+ 14,VTM,-12
+         : 14,  ITS  ,13
+ 14,VLM,*
+ ,ITS,
+ 7,VTM,DI
+            8,  VTM  ,-13
+           10,  VTM  ,
+ KYK*1   :   ,  UTC  ,STROKA              PACПAKOBKA KAPTЫ
+            8,  XTA  ,13                  HA OTДEЛЬHЫE CИMBOЛЫ
+            9,  VTM  ,-5
+ KYK*2   :   ,  ASN  ,64-8
+             ,  XTS  ,
+             ,  YTA  ,
+             ,  UTC  ,KART
+           10,  STX  ,
+           10,  UTM  ,1
+            9,  VLM  ,KYK*2
+            8,  VLM  ,KYK*1
+             ,  XTA  ,
+            7,  ATX  ,N2T-DI
+            7,  ATX  ,N/1-DI
+            7,  ATX  ,N/2-DI
+            1,  VTM  ,KART                HAЧAЛO ИCX. KAPTЫ
+            2,  VTM  ,KARTET              HAЧAЛO OTPEД. KAPTЫ
+            1,  WTC  ,
+           12,  VTM  ,-103B
+           12,  VZM  ,ENDED
+            1,  XTA  ,
+            6,  AEX  ,CON3                ПOMEЧAЮTCЯ 1 И 73
+            1,  ATX  ,
+            1,  XTA  ,72
+            6,  AEX  ,CON3                CИMBOЛЫ KAPTЫ
+            1,  ATX  ,72
+           12,  VTM  ,1
+ P2T     :  1,  UTC  ,
+           12,  WTC  ,
+           14,  VTM  ,
+           14,  MTJ  ,3
+            3,  UTM  ,-72B
+            3,  V1M  ,NO2T
+             ,  ITA  ,12
+            7,  ATX  ,N2T-DI
+            1,  UTC  ,
+           12,  XTA  ,
+            6,  AEX  ,CON3
+            1,  UTC  ,
+           12,  ATX  ,
+             ,  UJ   ,STST
+ NO2T    : 14,  UTM  ,-54B
+           14,  V1M  ,P2TE                HET ДBOETOЧИЯ
+             ,  XTA  ,
+            7,  ATX  ,N2T-DI
+             ,  UJ   ,STST
+ P2TE    : 12,  UTM  ,1
+           12,  MTJ  ,3
+            3,  UTM  ,-72
+            3,  V1M  ,P2T
+             ,  UJ   ,ENDED               HET ЗAПЯTOЙ
+ STST    : 12,  VTM  ,1
+ P/1*2   :  1,  UTC  ,                    OПPEДEЛEHИE ПOЛOЖEHИЯ
+           12,  WTC  ,                    ЗAПЯTЫX
+           14,  VTM  ,
+           14,  UTM  ,-54B
+           14,  V1M  ,NO//
+            7,  XTA  ,N/1-DI
+             ,  U1A  ,/2
+             ,  ITA  ,12
+            7,  ATX  ,N/1-DI              ПEPBAЯ ЗAПЯTAЯ
+            1,  UTC  ,
+           12,  XTA  ,
+            6,  AEX  ,CON3
+            1,  UTC  ,
+           12,  ATX  ,
+ NO//    : 12,  UTM  ,1
+           12,  MTJ  ,3
+            3,  UTM  ,-72
+            3,  V1M  ,P/1*2
+             ,  UJ   ,ENDED
+ /2      :   ,  ITA  ,12
+            7,  ATX  ,N/2-DI              BTOPAЯ ЗAПЯTAЯ
+            1,  UTC  ,
+           12,  XTA  ,
+            6,  AEX  ,CON3
+            1,  UTC  ,
+           12,  ATX  ,
+            3,  VTM  ,-71
+ 6,XTA,RCON40
+ PROB71  :  3,  UTC  ,71                  ЗAПOЛHEHИE ЭTAЛOHA ПPOБEЛAMИ
+            2,  ATX  ,
+            3,  VLM  ,PROB71
+            3,  VTM  ,-11
+ KONK    :  3,  UTC  ,11                  ПEPEПИCЬ 73-84 CИMBOЛOB
+            1,  XTA  ,72
+            3,  UTC  ,11
+            2,  ATX  ,72
+            3,  VLM  ,KONK
+            1,  XTA  ,                    ПEPEПИCЬ 1 CИMBOЛA
+            2,  ATX  ,
+            7,  XTA  ,N2T-DI
+             ,  UZA  ,NO2TA
+            7,  XTA  ,CONFOR2T-DI         ДBOETOЧИE B ЭTAЛOH
+            2,  ATX  ,9
+ NO2TA   :  7,  XTA  ,CONFOR/-DI          ЗAПЯTЫE B ЭTAЛOHE
+ 2,ATX,12
+ 2,ATX,18
+            3,  VTM  ,72
+           13,  VJM  ,BLACKL              ПPABЫE И ЛEBЫE ЗATEMHEHИЯ
+ 6,XTA,NN
+            6,  AAX  ,CON1
+             ,  U1A  ,NO2TA1
+ 6,WTC,NN
+ 3,VTM,
+           13,  VJM  ,BLACKL              OT TOЧKИ
+ 6,WTC,NN
+ 3,VTM,-1
+ 13,VJM,BLACKR
+ NO2TA1  :   ,  BSS  ,
+             ,  WTC  ,N/2
+            3,  VTM  ,
+            3,  MTJ  ,9
+           13,  VJM  ,BLACKR              OT BTOPOЙ ЗAПЯTOЙ
+            9,  MTJ  ,3
+           13,  VJM  ,BLACKL
+             ,  WTC  ,N/1
+            3,  VTM  ,
+            3,  MTJ  ,9
+           13,  VJM  ,BLACKR              OT ПEPBOЙ ЗAПЯTOЙ
+            9,  MTJ  ,3
+           13,  VJM  ,BLACKL
+            3,  VTM  ,
+           13,  VJM  ,BLACKR              OT 1 CИMBOЛA
+             ,  WTC  ,N2T
+            3,  VTM  ,
+            3,  VZM  ,WRWRF
+            3,  MTJ  ,9
+           13,  VJM  ,BLACKR              OT ДBOETOЧИЯ
+            9,  MTJ  ,3
+           13,  VJM  ,BLACKL
+ WRWRF   :   ,  BSS  ,                    ИCПPABЛEHИЯ 'TOЧKИ'
+ 6,WTC,NN
+            1,  UTC  ,
+ 9,VTM,
+            9,  XTA  ,
+ 6,XTS,NN
+            6,  AAX  ,CON1
+             ,  U1A  ,WRWRF1
+            9,  XTA  ,
+            6,  AOX  ,CON3
+            9,  ATX  ,
+ WRWRF1  :   ,  BSS  ,
+ 7,XTA,N/2-DI
+ ,STI,3
+ 4,VTM,18
+           13,  VJM  ,FRAG                ПEPEПИCЬ AДPECA
+ 15,UTM,1
+ 15,XTA,
+            9,  ATX  ,
+ 6,XTA,NN
+            6,  AAX  ,CON1
+             ,  U1A  ,KOPWR*
+ NOPR    :  4,  MTJ  ,12
+ 12,UTM,36
+             ,  ITA  ,12
+             ,  ASN  ,64+6
+             ,  U1A  ,COM/43
+ 4,VTM,27
+ COM/43  :  4,  UTM  ,-1
+ 6,WTC,NN
+ 3,VTM,-1
+           13,  VJM  ,FRAG                ПEPEПИCЬ KOMMEHTAPИЯ
+ KOPWR*  :   ,  BSS  ,
+             ,  WTC  ,N/1
+            3,  VTM  ,
+           13,  VJM  ,LENGTH              N SIMB. B MHEMOKOДE
+ 4,VTM,13
+            3,  UTM  ,-5
+            3,  V1M  ,KOPSH               HE 5
+            4,  UTM  ,-1
+ KOPSH   :   ,  WTC  ,N/1
+            3,  VTM  ,
+           13,  VJM  ,FRAG                ПEPEПИCЬ MHEMOKOДA,
+             ,  WTC  ,N/1
+            3,  VTM  ,
+ 4,VTM,12
+           13,  VJM  ,FRAGMT              YKAЗATEЛЯ PEГИCTPA,
+            7,  XTA  ,N2T-DI
+             ,  UZA  ,ENDEDIT
+            3,  VTM  ,
+            4,  VTM  ,
+           13,  VJM  ,FRAG                METKИ
+ ENDEDIT :   ,  BSS  ,                    YПAKOBKA OTДEЛЬHЫX CИMBOЛOB B
+            8,  VTM  ,-13                 KAPTY
+           10,  VTM  ,
+ KYK*3   :  9,  VTM  ,-5
+             ,  XTA  ,
+ KYK*4   :   ,  ASN  ,64-8
+             ,  UTC  ,KARTET
+           10,  XTS  ,
+             ,  ASN  ,64-3
+             ,  ASN  ,64+3
+           15,  AEX  ,
+           10,  UTM  ,1
+            9,  VLM  ,KYK*4
+             ,  UTC  ,STROKA
+            8,  ATX  ,13
+            8,  VLM  ,KYK*3
+ ENDED   :   ,  STI  ,                    RETURN ИЗ EDITOR
+           14,  VTM  ,13                  И EDITORF
+         : 14,  STI  ,
+           14,  UTM  ,-1
+           14,  V1M  ,*-1
+           11,  UJ   ,
+ BLACKR  :  5,  VTM  ,*                   ЗATEMHEHИE BПPABO
+            3,  UTM  ,1
+             ,  UJ   ,BLACKL+1
+ BLACKL  :  5,  VTM  ,*                   ЗATEMHEHИE BЛEBO
+            3,  UTM  ,-1
+            3,  UTC  ,
+            1,  XTA  ,
+            6,  AAX  ,CON1
+           13,  U1A  ,
+            3,  UTC  ,
+            1,  WTC  ,
+           12,  VTM  ,
+           12,  UTM  ,-40B
+           12,  V1M  ,BLAEND
+            3,  UTC  ,
+            1,  XTA  ,
+            6,  AEX  ,CON1
+            3,  UTC  ,
+            1,  ATX  ,
+            5,  UJ   ,
+ BLAEND  : 13,  UJ   ,
+ FRAG    :  5,  VTM  ,*                   ПEPEПИCЬ ФPAГMEHTA CЛEBA
+            4,  UTM  ,1
+            3,  UTM  ,1
+             ,  UJ   ,FRABEG
+ FRAGMT  :  5,  VTM  ,*                   ПEPEПИCЬ ФPAГMEHTA CПPABA
+            4,  UTM  ,-1
+            3,  UTM  ,-1
+ FRABEG  :  3,  UTC  ,
+            1,  XTA  ,
+            6,  AAX  ,CON2
+           13,  U1A  ,
+            3,  UTC  ,
+            1,  XTA  ,
+            6,  AAX  ,CON1
+            5,  U1A  ,1
+            4,  UTC  ,
+            2,  XTA  ,
+            6,  AAX  ,CON1
+             ,  U1A  ,ENDED
+            3,  UTC  ,
+            1,  XTA  ,
+            4,  UTC  ,
+            2,  ATX  ,
+            5,  UJ   ,
+ LENGTH  :  3,  MTJ  ,4                   OПPEДEЛEHИE ДЛИHЫ
+            3,  VTM  ,                    HEPEДAKTИPYEMOЙ ЧACTИ
+         :  4,  UTM  ,1
+            4,  UTC  ,
+            1,  XTA  ,
+            6,  AAX  ,CON2
+           13,  U1A  ,
+            4,  UTC  ,
+            1,  XTA  ,
+            6,  AAX  ,CON1
+             ,  U1A  ,LENGTH+1
+            3,  UTM  ,1
+             ,  UJ   ,LENGTH+1
+ CONFOR2T:   ,  OCT  ,1000 0000 0000 0072
+ CONFOR/ :   ,  OCT  ,1000 0000 0000 0054
+ N2T     :   ,  BSS  ,1
+ N/1     :   ,  BSS  ,1
+ N/2     :   ,  BSS  ,1
+C
+C+   ПOЗИЦИOHHAЯ ДИAГHOCTИKA
+C
+ ERRPLA1:15,ATX,1
+ ,ITA,13
+ 6,XTS,CNR4000
+ 6,AOX,FLGEX*
+ 6,ATX,FLGEX*
+ 6,XTA,ERCNT
+ 6,ARX,RCON1
+ 6,ATX,ERCNT
+ 15,UTM,1
+           13,  VJM  ,MADNAME
+ :15,XTA,
+             ,  ASN  ,64-1
+ 9,VTM,C
+             ,  UZA  ,RETURNA
+ 9,XTS,*ENDOP-C
+ 15,MTJ,10
+ 15,VTM,ERRORBUF
+ 9,XTS,=6H OШИБK-C
+ 9,XTS,=6HA B ''''-C
+ 10,XTS,-1
+ ,NTR,13B
+ ,U1A,NOMET
+ 9,XTA,=6HMETKE,-C
+ 10,XTS,-1
+ NOMET   :   ,  ASN  ,64-1
+ 10,ATX,-1
+ ,NTR,13B
+ ,U1A,NOMOD
+ 9,XTA,=6HMOДИФИ-C
+ 9,XTS,=6HKATOPE-C
+ 9,XTS,=:13-C
+ 10,XTS,-1
+ NOMOD   :   ,  ASN  ,64-1
+ 10,ATX,-1
+ ,NTR,13B
+ ,U1A,NOKOP
+ 9,XTA,=6HKOП,''''-C
+ 10,XTS,-1
+ NOKOP   :   ,  ASN  ,64-1
+             ,  UZA  ,RETURNE
+ 9,XTA,=6HAДPECE-C
+ 15,ATX,
+ RETURNE:14,VTM,ERRORBUF
+ ,ITA,14
+ 10,STX,-1
+ ,ITA,15
+ 10,MTJ,15
+ ,ITS,
+ 13,VJM,PRINT8**
+ RETURNZ:6,WTC,RSTNR
+ 14,VTM,-ERRORS-64
+ ,ATI,13
+ 6,XTA,STRNUM
+ 14,VZM,*+6
+ 9,AEX,=26000-C
+ 14,UTM,ERRORS+65
+ 14,AEX,-2
+ ,UZA,*+4
+ 14,AEX,-2
+ 14,ATX,-1
+ ,ITA,14
+ 6,ATX,RSTNR
+ ,ITA,
+ 14,ATX,
+ :6,XTA,FLFAT
+ 11,U1A,
+ 6,XTA,ERCNT
+ ,ASN,64+6
+ 11,UZA,
+ 6,ATX,FLFAT
+ ,UJ,MADLEN*3
+ RETURNA:15,XTA,
+ ,UJ,RETURNZ
+C
+C+   ДИAГHOCTИKA БEЗ YKAЗAHИЯ ИMEHИ
+C
+ OPR:6,XTA,MISTABL
+ 6,AOX,CON4
+ 6,ATX,MISTABL
+ 12,VJM,CHECKPRO
+C
+C+   ФATAЛЬHAЯ ДИAГHOCTИKA
+C
+ GENP:13,MTJ,12
+ 13,VJM,MADNAME
+ :12,MTJ,13
+ 9,MTJ,14
+ CYCL:14,XTA,
+ 6,AAX,RCON377
+             ,  UZA  ,ECYCL
+           14,  VLM  ,CYCL
+ ECYCL:,ITS,9
+ ,ITS,14
+ ,ITS,
+ ,UJ,PRINT8**
+ POSTERR:9,VTM,ERTXT1
+ ,UJ,GENP
+ :9,VTM,*TEXT4
+ ,UJ,GENP
+C
+C+   ДИAГHOCTИKA C YKAЗAHИEM ИMEHИ
+C
+ DEC:6,XTS,MISTABL
+ 6,AOX,CON4
+ 6,STX,MISTABL
+ 12,VJM,CHECKPRO
+ :12,XTS,*ENDOP-*
+ 6,ATX,-9
+ 13,MTJ,12
+ 14,VTM,-5
+ CYCL1:14,UTC,
+ 9,XTA,
+ 14,UTC,STROKA-3
+ ,ATX,
+ 14,VLM,CYCL1
+ 13,VJM,MADNAME
+ :15,XTA,
+ 12,MTJ,13
+ 9,VTM,STROKA-9
+ 12,VJM,MDL*6T8W
+ :6,STX,-1
+ 6,ATX,-2
+ 14,VTM,STROKA-1
+ ,UJ,ECYCL
+ *TEXT1:,ISO,30HOTCYTCTBYET ИMЯ ПPOГPAMMЫ''''''''''
+ *TEXT2:,ISO,30HПEPEПOЛHEHA TAБЛИЦA OПИCAHИЙ''''
+ *TEXT3:,ISO,30HДЛИHA ПPOГPAMMЫ ПPEBЫШAET BOЗM
+ ,CONT,18HOЖHOCTИ MAШИHЫ ''''''''
+ *TEXT4  :   ,  ISO  ,18HOЧEHЬ MHOГO OШИБOK
+ ,ISO,24H,CKAHИPOBAHИE ПPEKPAЩEHO
+ ,OCT,
+ *TEXT5:,ISO,36HCЛИШKOM ГЛYБOKO И CЛИШKOM ЧACTO - ПE
+ ,CONT,24HPEПOЛHEH CTEK MACRO''''''''''
+ ,ISO,30H ДBAЖДЫ OПИCAHHЫЙ ИДEHTИФИKATO
+ *TWODEC:,ISO,6HP:  ''''
+ :,ISO,30H HEOПИCAHHЫЙ ИДEHTИФИKATOP: ..
+ *NODEC:,ISO,6H... ''''
+ :,ISO,30H HEДOПYCTИMAЯ CИHOHИMИЯ ДЛЯ ..
+ *LOCKDEC:,ISO,6H... ''''
+ :,ISO,30H ДBAЖДЫ OПPEДEЛEHHЫЙ KOП: ....
+ *TWOCOP:,ISO,6H... ''''
+ :,ISO,30H HEAБCOЛЮTHЫЙ ИДEHTИФИKATOP: .
+ *NOABSI:,ISO,6H... ''''
+ :,ISO,30H HEЯBHO OПИCAHHЫЙ ИДEHTИФИKATO
+ *NODEFI:,ISO,6HP:  ''''
+ :,ISO,30H HEДOПYCTИMЫЙ ПAPAMETP: ......
+ *BADPAR:,ISO,6H... ''''
+ *ENDOP:,ISO,30H****** HEЗAKOHЧEHHЫЙ OПEPATOP''
+ *NOOP:,ISO,30H****** HEДOПYCTИMЫЙ OПEPATOP:''
+ *NOABSAD:,ISO,30H****** HEAБCOЛЮTHЫЙ AДPEC:''''''''
+ *NODEFAD:,ISO,24H****** HEЯBHЫЙ AДPEC:''''''
+ *LONGAD:,ISO,24H****** ДЛИHHЫЙ AДPEC:''''''
+ *GLOBER:,ISO,48H****** ГЛOБAЛЬHЫЙ KOHФЛИKT C CИCTEMHЫM TEKCTOM:''
+ *ZEROM:,ISO,30H****** HYЛEBOЙ MOДИФИKATOP:''''''
+ *LONGM:,ISO,30H****** ДЛИHHЫЙ MOДИФИKATOP:''''''
+C
+C+   ПEЧATЬ ИMEH CИCTEMHЫX TEKCTOB
+C
+ STEXTIN:9,XTS,=6HSYSTEM-C
+ 13,VTM,KART+2
+ 13,ATX,-2
+ 9,XTA,=6H TEXT''-C
+ 13,ATX,-1
+ 6,XTA,STNAM*+1
+ 10,VTM,-4
+ ,UZA,*+2
+ 9,XTA,=6H TEXTS-C
+ 13,ATX,-1
+ 9,XTA,=6H: ''''''''-C
+ 13,STX,
+ STEXTIN1:,UZA,STPRI
+ 12,VJM,MDL*6T8W
+ :6,AEX,*PROBEL
+ 9,MTJ,12
+ ,UZA,*+4
+ 15,ATX,
+ 6,ARX,NG1B
+ 15,AOX,-1
+ 15,AEX,-1
+ 6,AAX,*PROBEL
+ 6,AEX,*PROBEL
+ 15,AEX,
+ :9,AEX,=54-C
+ 13,STX,2
+ 6,AEX,*PROBEL
+ 15,ATX,
+ 6,ARX,NG1B
+ 15,AOX,-1
+ 15,AEX,-1
+ 6,AAX,*PROBEL
+ 6,AEX,*PROBEL
+ 15,AEX,
+ 13,ATX,1
+ 13,UTM,2
+ 11,XTA,1
+ 11,UTM,1
+ 10,VLM,STEXTIN1
+ 13,UTM,-1
+ STPRI1:14,VTM,KART
+ ,ITS,14
+ ,ITS,13
+ 6,XTS,RCON1
+ 10,VTM,-4
+ 13,VJM,PRINT8**
+ :,UZA,RTRS
+ 13,VTM,KART+2
+ ,UJ,STEXTIN1
+ STPRI:13,UTM,-1
+ ,UJ,STPRI1
+C
+C+   ПEЧATЬ CTPYKTYPЫ
+C
+ STRPRINT:6,XTA,LISMASK
+ 6,AOX,LISLAST
+ 6,AAX,LIS*L
+ 12,VTM,C
+ ,UZA,ERSTPR3
+ 6,XTA,STNAM*
+ 11,VTM,STROKA+STNAM*
+ 12,MTJ,9
+ RTRS:,U1A,STEXTIN
+ 12,XTA,=2-C
+ 6,ATX,MESMOD
+ 12,XTA,=13-C
+ 6,ATX,MESADR3
+ 13,VJM,SPACE
+ ,XTA,
+ 6,ATX,TITLE2
+ :,UTC,ERRORBUF
+ ,ATX,9
+ ,UTC,ERRORBUF
+ ,ATX,10
+ 14,VTM,STROKA+INDTABL
+ 9,VTM,1-8
+ :14,XTA,
+ 14,UTM,1
+ ,UZA,*+1
+ 13,VJM,ENCODE
+ :,ASN,64-8
+ ,UTC,MA
+ ,AOX,2
+ 14,ATX,-1
+ 9,VLM,*-4
+ 6,XTA,FLGEX*
+ 12,VTM,C
+ 8,VTM,ERRORBUF
+ ,UZA,QQR
+ ,ASN,64-2
+ ,U1A,QQP
+ 12,XTA,=6H    DE-C
+ 8,ATX,9
+ 12,XTA,=6HLITED''-C
+ 8,ATX,10
+ ,UJ,QQR
+ QQP:12,XTA,=6H  **ER-C
+ 8,ATX,9
+ 12,XTA,=6HROR**''-C
+ 8,ATX,10
+ QQR:9,VTM,-9
+           10,  VTM  ,TEXT1A
+           11,  VTM  ,MA
+           14,  VTM  ,STR1
+             ,  ITS  ,14
+           14,  VTM  ,STR2
+             ,  ITS  ,14
+ 14,VTM,1
+             ,  ITS  ,14
+ 13,VJM,PRINT8**
+ CYCLAB1 : 10,  XTA  ,
+ 8,ATX,
+           10,  XTA  ,1
+ 8,ATX,1
+           10,  XTA  ,2
+ 8,ATX,2
+            9,  UTC  ,9
+            6,  XTA  ,
+ ,ASN,64+15
+ ,YTA,
+           11,  AUX  ,
+ 11,AEX,1
+ 8,ATX,3
+ 11,XTA,3
+ 8,ATX,4
+ 10,XTA,30
+ 8,ATX,5
+ 10,XTA,31
+ 8,ATX,6
+ 10,XTA,32
+ 8,ATX,7
+ 9,UTC,9
+ 6,XTA,INDTABL
+ 8,ATX,8
+ ,ITS,8
+ 14,VTM,ERRORBUF+10
+             ,  ITS  ,14
+ 6,XTS,RCON1
+ 13,VTM,CYCLAB1
+ 10,UTM,3
+ 9,VLM,PRINT8**
+ 13,VTM,MADEND
+ ,UJ,PRINT8**
+ MA      :   ,  OCT  ,0000340701603407
+ ,ISO,6H 00000
+ ,ISO,6H00000+
+ ,ISO,6H  ''''''''
+ STR1:,ISO,18H+++ CTPYKTYPA ПPOГ
+ ,ISO,18HPAMMЫ: +++++++++++
+ ,ISO,12H++++++++++++
+ STR2:,ISO,2H++
+ TEXT1A:,ISO,18H+              ИMЯ
+ ,ISO,18H+         OПИCAHИЯ
+ ,ISO,18H+      KOMMEHTAPИЙ
+ ,ISO,18H+ PEЗEPBHAЯ ГPYППA
+ ,ISO,18H+ДЛ.ИДEHTИФИKATOPЫ
+ ,ISO,18H+          KOMAHДЫ
+ ,ISO,18H+       ГPYППA BSS
+ ,ISO,18H+        KOHCTAHTЫ
+ ,ISO,18H+             DATA
+ ,ISO,18H+         PACCЫЛKИ
+ ,ISO,18H            BXOДЫ
+ ,ISO,18H             SUBP
+ ,ISO,18H           ARRAYS
+ ,ISO,18H   ИДEHTИФИKATOPЫ
+ ,ISO,18H            DEBUG
+ ,ISO,18H            XTEXT
+ ,ISO,18H       ИHCTPYKЦИИ
+ ,ISO,18H ГЛOБ.БAЗИPOBAHИE
+ ,ISO,18H             DISP
+ ,ISO,18H            MODEL
+C
+C+   ПEЧATЬ TAБЛИЦЫ OПИCAHИЙ
+C
+ TOPRINT:6,XTS,OCTAL
+ 12,VTM,ERRORBUF
+ ,ATI,11
+ ,UZA,*BEGIN
+ GOTO:6,ARX,RCON1
+ 6,STX,OCTAL
+ 11,UTC,
+ 12,ATX,10
+ 11,UTM,-2
+ 13,UTC,
+ 11,V1M,
+ 11,UTM,3
+ FICA:6,XTA,OCTAL
+ 6,AUX,ZGOST7
+ ,UTC,ZRBL
+ ,AEX,
+ 12,ATX,
+ 12,MTJ,10
+ FIC:10,XTA,10
+ 6,AUX,ZGOST7
+ 6,AEX,ZISO0
+ 12,ATX,1
+ 10,XTA,10
+ ,ASN,64-18
+ 10,ATX,10
+ 6,AUX,ZGOST7
+ 6,AEX,ZISO0
+ 12,ATX,2
+ 10,XTA,10
+ ,ASN,64-18
+ 6,AUX,ZGOST7
+ ,UTC,ZERO
+ ,AEX,
+ 12,ATX,3
+ 12,UTM,3
+ 10,UTM,1
+ 11,UTM,-1
+ 11,V1M,FIC
+ 6,XTA,OCTAL
+ ,ASN,64+3
+ 15,ATX,
+ ,YTA,
+ ,ASN,64+12
+ 15,ARX,
+ ,ASN,64-3
+ 6,ATX,OCTAL
+ 14,VTM,ERRORBUF
+ ,ITS,14
+ ,ITS,12
+ 6,XTS,RCON1
+ ,UJ,PRINT8**
+ *BEGIN:6,ATX,TITLE2
+ 14,VTM,-7
+ :6,UTC,TITLE2+10
+ 14,ATX,
+ 14,VLM,*-1
+ ,ITA,13
+ 14,VTM,TEXT1B
+ ,ITS,14
+ 14,VTM,TEXT2A
+ ,ITS,14
+ 6,XTS,RCON1
+ 13,VJM,PRINT8**
+ :14,VTM,TEXT1B
+ ,ATI,13
+ 14,XTA,
+ 6,ATX,TITLE2
+ 14,XTA,1
+ 6,ATX,TITLE2+1
+ 14,XTA,2
+ 6,ATX,TITLE2+2
+ 6,XTA,CON4
+ ,UJ,GOTO
+ TOPRINT1:6,XTS,OCTAL
+ ,UZA,STRPRINT
+ 6,AAX,RCON3
+ 12,VTM,ERRORBUF
+ ,UZA,STRPRINT
+ ,ATI,11
+ 13,VTM,STRPRINT
+ ,UJ,FICA
+ TEXT1B  :   ,  ISO  ,12HTAБЛИЦA  OПИ
+ TEXT2A:,ISO,6HCAHИЙ:
+ MADEND:6,XTA,NCARD
+ 13,VJM,ENCODE
+ ,UTC,TEXT2C
+ ,ATX,
+ 6,XTA,ERCNT
+ 13,VJM,ENCODE
+ ,ASN,64+16
+ 14,VTM,TEXT1C
+ ,YTA,
+ 14,ATX,TEXT4-TEXT1C
+             ,  ITS  ,14
+           14,  VTM  ,TEXT4
+             ,  ITS  ,14
+           14,  VTM  ,1
+             ,  ITS  ,14
+ 13,VJM,PRINT8**
+C
+C+   ПEЧATЬ HOMEPOB OШИБOЧHЫX CTPAHИЦ
+C
+ 6,XTA,FLGEX*
+ 11,VTM,ERRORSTR-1
+ ,UZA,ERSTPR3
+ 11,XTA,4
+ ,UZA,ERSTPR3
+ ,XTA,
+ 6,ATX,TITLE2
+ 14,VTM,STROKA+*PROBEL
+ ,ITS,14
+ ,ITS,14
+ ,XTS,
+ 13,VJM,PRINT8**
+ :6,WTC,RSTNR
+ 14,VTM,-1
+ 14,XTA,
+ ,UTC,=1000
+ ,AEX,
+ 14,ATX,
+ ERSTPR1:11,XTA,1
+ 11,UTM,1
+ ,UZA,ERSTPR3
+ ,ITS,11
+ 11,XTS,1
+ 14,VTM,-10
+ :,UZA,*+2
+ 11,XTA,2
+ 11,UTM,1
+ 14,VLM,*-1
+ :,ITA,11
+ 6,XTS,TITLE2
+ ,UZA,*+1
+ ,UTC,ERSTPR1-ERSTPR2
+ :13,VTM,ERSTPR2
+ 6,XTA,RCON1
+ 14,VZM,PRINT8**
+ 13,VJM,PRINT8**
+ ERSTPR3:,ITA,
+  ,UTC,ERRORS
+ ,ATX,
+ 6,ATX,TITLE2
+ 15,WTC,
+ ,UJ,
+ ERSTPR2:14,VTM,ERRORSTR
+ 14,XTA,
+ 6,ATX,TITLE2
+ 14,XTA,1
+ 6,ATX,TITLE2+1
+ 14,XTA,2
+ 6,ATX,TITLE2+2
+ ,UJ,ERSTPR1
+ EJECT:6,XTA,LISLAST
+ ,ASN,64+2
+ 6,AAX,LISLAST
+ 6,AAX,LIS*N
+ 13,UZA,
+ ,UJ,PRINT8**+2
+ SPACE:6,XTA,LISLAST
+ ,ASN,64+2
+ 6,AAX,LISLAST
+ 6,AAX,LIS*N
+ 13,UZA,
+ 6,XTA,LIS*B
+ 6,AAX,LISLAST
+ 12,VTM,PRIBUF*
+ ,U1A,*+3
+ 12,XTA,772
+ 12,AEX,
+ 13,UZA,
+ ,UJ,*+4
+ :12,XTA,772
+ 12,AEX,1
+ ,U1A,SP2
+ 12,XTA,
+ 12,AEX,1
+ 13,UZA,
+ :12,XTA,
+ 13,UZA,
+ SP1:6,XTS,MESMOD
+ 6,ARX,MESADR3
+ 6,AEX,NGZB
+ 15,ARX,
+ ,UZA,PRINT8**+2
+ 6,XTA,MESMOD
+ 13,UZA,
+ ,ITA,13
+ 6,XTS,MESMOD
+ 12,VTM,STROKA+*PROBEL
+ PRPR:,ITS,12
+ 15,ATX,
+ ,XTS,
+ 13,VJM,PRINT8**
+ 6,ARX,NG1B
+ ,U1A,PRPR
+ 15,WTC,
+ ,UJ,
+ SP2:12,XTA,1
+ ,UJ,SP1
+ CPRINT:,BSS,
+ 12,XTA,=5H +CL+-CPRINT
+ ,UJ,COM*1
+ GERPRI:6,ATX,-4
+ ,UJ,COM*1
+ SKIPREE:,ITA,
+ 12,VJM,*+3
+ SKIPPR:6,XTA,LISLAST
+ 6,AAX,LIS*F
+ 13,UZA,
+ ,ITA,
+ :6,ATX,MISTABL
+ 12,XTA,=5H SKIP-SKIPPR
+ COM*1:6,ATX,-4
+ 11,VJM,ERRPLACE
+ :6,XTA,*PROBEL
+ 6,ATX,-2
+ COM**1:6,XTA,LISLAST
+ 6,AAX,LIS*G
+ :6,XTS,NGZB
+ 15,ARX,-1
+ 15,AEX,
+ 6,AEX,NGZB
+ ,UTC,BLANK/
+ ,AAX,
+ 6,ATX,-3
+ ,UJ,PRIKYKY
+ ERIFPR:6,AOX,RCON1
+ 6,ATX,FLGEX*
+ 6,XTA,FLAGTABL
+ 6,AAX,RCON1
+ ,U1A,IFPR-2
+ 6,ATX,MISTABL
+ ,ITA,13
+ 15,ATX,
+ 9,VTM,ERRTXT
+ 13,VJM,GENP
+ :15,WTC,
+ 13,VTM,
+ 6,XTA,MISTABL
+ 6,AOX,CON4
+ 6,ATX,MISTABL
+ 12,VTM,IFPR
+ IFPR:12,XTA,=5H =IF=-*
+ 6,ATX,-4
+ 11,VTM,DECPRC
+ ,UJ,ERRPLACE
+ ERRORPR:12,XTA,=5H =ER=-*
+ 6,ATX,-4
+ 6,XTA,MISTABL
+ 6,AAX,CON76
+ 6,AEX,VERET
+ 11,VTM,COM*1+1
+ ,UZA,ERRPLACE
+ 12,XTA,=5H ****-ERRORPR
+ 6,ATX,-2
+ 11,VLM,ERRPLACE
+ LISTPR:6,XTA,LISMASK
+ 6,AAX,LIS*L
+ ,UZA,LISTPR2
+ ,ITA,13
+ 6,ATX,MESADR5
+ 6,XTA,LISLAST
+ 6,ATX,XADRESS5
+ 6,AOX,LIS*L
+ 6,XTS,LISTAND
+ 6,AAX,LIS*E
+ 15,AOX,
+ 6,ATX,LISLAST
+ 12,XTA,=5H LIST-LISTPR
+ 13,VJM,COM*1
+ 6,XTA,XADRESS5
+ 6,ATX,LISLAST
+ 6,WTC,MESADR5
+ ,UJ,
+ ENDPRO1:,UZA,*+7
+ 6,XTA,LISLAST
+ 6,AAX,LIS*L
+ ,U1A,*+6
+ ,ITA,13
+ 13,VTM,TEXPRO
+ ,ITS,13
+ 13,UTM,5
+ ,ITS,13
+ 13,VTM,14
+ ,ITS,13
+ 13,VJM,PRINT8**
+ :,ATI,13
+ :,ITA,
+ 6,ATX,FLGEX*
+ ,UTC,ERRORS
+ ,ATX,
+ 6,ATX,ERCNT
+ ,UJ,MADNAME
+ TEXPRO:,ISO,36H------ KOHEЦ ПEPBOГO ПPOXOДA ------''
+ LISTPR2:12,XTA,=5H LIST-LISTPR
+ ,UJ,COM*1
+C
+C+   ПEЧATЬ BPEMEHИ
+C
+ TIME:12,VTM,STROKA+CTM
+ ,*50,70077B
+ 12,ATX,4
+ ,*50,70210B
+ 12,ATX,3
+ ,*50,67B
+ DCDOD:6,AAX,RMASK26
+ 14,VTM,-1
+ 6,XTS,CONR24
+ 6,STX,RR2
+ :15,ATX,
+ 6,AAX,RR2
+ 6,STX,RR1
+ 6,AEX,RR1
+ ,ASN,64+1
+ 6,XTS,RR2
+ ,ASN,64+4
+ 6,STX,RR2
+ 15,UTM,1
+ ,ASN,64+2
+ 15,ARX,
+ 6,ARX,RR1
+ 15,ATX,
+ 6,AAX,RR2
+ 6,STX,RR1
+ 6,AEX,RR1
+ ,ASN,64+2
+ 6,XTS,RR2
+ ,ASN,64+4
+ 6,STX,RR2
+ 15,UTM,1
+ ,ASN,64+1
+ 15,ARX,
+ 6,ARX,RR1
+ 14,VLM,DCDOD+2
+ 14,VTM,-1
+ DCDOD2:15,ATX,
+ 6,AAX,RR2
+ 6,STX,RR1
+ 6,AEX,RR1
+ ,ASN,64+1
+ 6,XTS,RR2
+ ,ASN,64+4
+ 6,STX,RR2
+ 15,UTM,1
+ ,ASN,64+2
+ 15,ARX,
+ 6,ARX,RR1
+ 14,VLM,DCDOD2
+ 12,XTS,2
+ ,U1A,*+4
+ 12,XTA,3
+ 12,ATX,
+ 12,XTA,4
+ 12,STX,1
+ 6,AEX,NGZB
+ 12,ATX,2
+ 13,UJ,
+ :12,XTA,2
+ 15,ARX,
+ 6,ATX,RR1
+ ,ITA,13
+ 6,XTS,RR1
+ 12,MTJ,14
+ ,ARX,
+ 13,VTM,TIME21
+ ,U1A,ENCODE
+ 6,ARX,CONPRIL
+ 6,XTS,STAR3B
+ 14,AEX,15
+ 14,STX,15
+ 6,ATX,RR1
+ 6,AEX,CONPRIL
+ 15,ATX,
+ 6,ARX,NGZB
+ 15,AEX,
+ 6,AEX,NGZB
+ 6,AAX,RR1
+ ,U1A,ENCODE
+ 6,XTA,RISO10
+ TIME21:,ASN,64+8
+ 6,ATX,RR1
+ ,YTA,
+ ,ASN,64+8
+ 14,AEX,15
+ 14,ATX,15
+ 14,XTA,14
+ 6,AEX,RR1
+ 14,ATX,14
+ 6,XTA,FLGEX*
+ ,UZA,*+2
+ 6,XTA,D4B
+ 14,AOX,15
+ 14,ATX,15
+ :14,XTA,3
+ ,NTR,4
+ 14,A-X,
+ 6,A*X,CREAL10
+ 14,ATX,
+ 14,XTA,4
+ 14,A-X,1
+ 6,A*X,CREAL10
+ ,NTR,7
+ 6,A+X,CINT0
+ 6,AAX,RMASK26
+ 13,VJM,ENCODE
+ ,ASN,64+8
+ 6,ATX,RR1
+ ,YTA,
+ ,ASN,64+8
+ 14,AEX,9
+ 14,ATX,9
+ 14,XTA,8
+ 6,AEX,RR1
+ 11,VTM,STROKA+CTM+8
+ 12,VJM,PACK
+ 14,ATX,9
+ 14,XTA,
+ ,NTR,7
+ 6,A+X,CINT0
+ 6,AAX,RMASK26
+ 13,VJM,ENCODE
+ ,ASN,64+8
+ 6,ATX,RR1
+ ,YTA,
+ ,ASN,64+8
+ 14,AEX,12
+ 14,ATX,12
+ 14,XTA,11
+ 6,AEX,RR1
+ 11,VTM,STROKA+CTM+11
+ 12,VJM,PACK
+ :14,STX,12
+ 14,UTM,5
+ ,ATI,13
+ ,ITS,14
+ 14,UTM,10
+ ,ITS,14
+ 6,XTS,RCON1
+ ,UJ,PRINT8**+3
+C
+C+   ПEPEBOД ЧИCЛA B ДECЯTИЧHYЮ CИCTEMY
+C
+ ENCODE:6,ATX,RR2
+ ,NTR,7
+ 6,XTS,*PROBEL
+ 6,STX,RR1
+ 6,A*X,C/10
+ 12,VTM,
+ :15,ATX,
+ ,ASN,64-1
+ 15,ATX,
+ ,ASN,64-2
+ 15,ARX,
+ 6,AEX,NGZB
+ 6,ARX,RR2
+ 6,ARX,RCON20
+ 12,VLM,ENCODE1
+ 6,AEX,RR1
+ 6,STX,RR1
+ 12,UTM,64-9
+ 6,ATX,RR2
+ 6,A*X,C/10
+ ,UJ,ENCODE+3
+ ENCODE1:12,ASN,
+ 6,AEX,RR1
+ 6,STX,RR1
+ 12,UTM,-8
+  6,ATX,RR2
+ 6,A*X,C/10
+ 6,AAX,RMASK26
+ ,UZA,ENCODE2
+ 15,ATX,
+ ,ASN,64-1
+ 15,ATX,
+ ,ASN,64-2
+ 15,ARX,
+ 6,AEX,NGZB
+ 6,ARX,RR2
+ 6,ARX,RCON20
+ ,UJ,ENCODE1
+ ENCODE2:6,XTA,RR2
+ ,UZA,*+2
+ 6,AEX,RCON20
+ 12,ASN,
+ :6,AEX,RR1
+ 13,UJ,
+ PACK:11,ATX,
+ 6,AEX,*PROBEL
+ ,ASN,64-8
+ 15,ATX,1
+ ,YTA,
+ ,ATI,13
+ 11,XTA,1
+ 12,UTC,
+ 13,V1M,
+ 13,VTM,8
+ :15,XTA,1
+ ,ASN,64-8
+ 15,ATX,1
+ ,YTA,
+ 13,UTM,-8
+ ,UZA,*-2
+ 11,XTA,
+ 13,ASN,64
+ 11,ATX,
+ ,YTA,
+ 11,XTS,1
+ 13,ASN,64
+ 15,ATX,
+ ,YTA,
+ 11,AEX,
+ 11,STX,
+ 15,AEX,
+ 12,UJ,
+ ERRTXT:,ISO,36H****** CБOЙ YCЛOBHOЙ TPAHCЛЯЦИИ ''''''''''
+ ERTXT1:,ISO,24HCKAHИPOBAHИE ПPEKPAЩEHO''
+ TEXT1C:,ISO,12HЧИCЛO ПEPФ.
+ TEXT2C  :   ,  OCT  ,
+             ,  ISO  ,H
+ TEXT3:,ISO,24HЧИCЛO OШИБ. OПEPATOPOB
+ TEXT4   :   ,  OCT  ,
+ ERRORSTR:,ISO,18HOШИБKИ HA CTP. ''''''
+ ERRORS:,BSS,63
+ COM:,,
+ ,Z00,ERRORS
+ 1,SET,COM
+ 1,,STROKA+RSTNR
+ ,END,
+ 
